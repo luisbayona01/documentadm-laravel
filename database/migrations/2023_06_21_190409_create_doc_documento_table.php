@@ -11,7 +11,7 @@ class CreateDocDocumentoTable extends Migration
         Schema::create('doc_documento', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('doc_id');
-            $table->integer('doc_codigo');
+            $table->string('doc_codigo',45);
             $table->string('doc_nombre', 60);
             $table->string('doc_contenido', 45)->nullable();
             $table->unsignedInteger('doc_id_proceso')->nullable();
