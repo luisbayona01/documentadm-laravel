@@ -8,9 +8,10 @@ class CreateProProcesoTable extends Migration
     public function up()
     {
         Schema::create('pro_proceso', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre');
-            $table->string('prefijo');
+            $table->engine = 'InnoDB';
+            $table->increments('pro_id');
+            $table->string('pro_prefijo', 20);
+            $table->string('pro_nombre', 60);
             $table->timestamps();
         });
     }

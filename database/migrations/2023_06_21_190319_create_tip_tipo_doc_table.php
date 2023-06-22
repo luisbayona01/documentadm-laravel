@@ -9,9 +9,10 @@ class CreateTipTipoDocTable extends Migration
     public function up()
     {
         Schema::create('tip_tipo_doc', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre');
-            $table->string('prefijo');
+            $table->engine = 'InnoDB';
+            $table->increments('tip_id');
+            $table->string('tip_nombre', 60);
+            $table->string('tip_prefijo', 20);
             $table->timestamps();
         });
     }

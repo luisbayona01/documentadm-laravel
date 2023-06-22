@@ -9,14 +9,29 @@ class CreateDocDocumentoTable extends Migration
     public function up()
     {
         Schema::create('doc_documento', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('proceso_id');
-            $table->unsignedInteger('tipo_doc_id');
-            $table->string('codigo');
-            $table->timestamps();
+            $table->engine = 'InnoDB';
+            $table->increments('doc_id');
+            $table->integer('doc_codigo');
+            $table->string('doc_nombre', 60);
+            $table->string('doc_contenido', 45)->nullable();
+            $table->unsignedInteger('doc_id_proceso')->nullable();
+            $table->unsignedInteger('doc_id_tipo')->nullable();
 
-            $table->foreign('proceso_id')->references('id')->on('pro_proceso');
-            $table->foreign('tipo_doc_id')->references('id')->on('tip_tipo_doc');
+            $table->index(["doc_id_proceso"], 'doc_documento_proceso_id');
+
+            $table->index(["doc_id_tipo"], 'doc_documento_tipo_doc_id');
+            $table->nullableTimestamps();
+
+
+            $table->foreign('doc_id_proceso', 'doc_documento_proceso_id')
+                ->references('pro_id')->on('pro_proceso')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('doc_id_tipo', 'doc_documento_tipo_doc_id')
+                ->references('tip_id')->on('tip_tipo_doc')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
