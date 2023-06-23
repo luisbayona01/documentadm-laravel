@@ -55,6 +55,8 @@ this.getTipoDoc();
   }
 
  getdataproceso():void{
+ this.nuevoDocumento.proceso=''
+      this.nuevoDocumento.tipodoc='' 
   this.documentosService.getProcesos().subscribe(
         response => {
           this.proceso = response;
@@ -69,6 +71,8 @@ this.getTipoDoc();
 } 
 
 getTipoDoc():void{
+   this.nuevoDocumento.proceso=''
+   this.nuevoDocumento.tipodoc=''
   this.documentosService.getTipoDocumentos().subscribe(
         response => {
           this.tipodocumento = response;
@@ -85,12 +89,17 @@ getTipoDoc():void{
 
 
  gdarCambiosDoc(){
-//console.log(this.nuevoDocumento); 
+
+
+console.log(this.nuevoDocumento.proceso= this.nuevoDocumento.proceso);
+console.log(this.nuevoDocumento.tipodoc=this.nuevoDocumento.tipodoc);
+console.log(this.nuevoDocumento);
+//return false; 
 this.documentosService.updateDocumento(this.nuevoDocumento,this.iddoc).subscribe(data => {
       this.dataresponse=data;
  console.log(this.dataresponse);
   this.toastr.success( this.dataresponse['message']);
-  this.router.navigate(['documentos'])     
+  //this.router.navigate(['documentos'])     
  
       });
 //console.log(this.iddoc);

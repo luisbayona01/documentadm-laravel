@@ -49,18 +49,16 @@ class DocDocumentoController extends Controller
         
  }
     public function update(Request $request, $id)
-    {       
+    {       //return  $request->all();
         $documento = DocDocumento::findOrFail($id);
         $documento->doc_nombre = $request->input('doc_nombre');
         $documento->doc_contenido = $request->input('doc_contenido');
-        $documento->doc_id_tipo = $request->input('doc_id_tipo');
-        $documento->doc_id_proceso = $request->input('doc_id_proceso');
+        $documento->doc_id_tipo = $request->input('tipodoc');
+        $documento->doc_id_proceso = $request->input('proceso');
 
-        // Verificar si el tipo o proceso del documento han cambiado
-        if ($documento->isDirty('doc_id_tipo') || $documento->isDirty('doc_id_proceso')) {
-            $codigo = $this->generarCodigoDocumento($documento->doc_id_tipo, $documento->doc_id_proceso);
-               $documento->doc_codigo = $codigo;;
-        }
+        
+        $codigo = $this->generarCodigoDocumento($documento->doc_id_tipo, $documento->doc_id_proceso);
+        $documento->doc_codigo = $codigo;
 
         $documento->save();
 

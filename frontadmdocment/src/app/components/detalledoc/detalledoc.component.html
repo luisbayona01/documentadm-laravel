@@ -29,7 +29,7 @@
                       </div>
                       <div class="mb-3 mt-3">
                         <label for="uname" class="form-label">Tipo doc:</label>
-                        <select class="form-control" name="tipodoc" [(ngModel)]="nuevoDocumento.tipodoc"required>
+                        <select class="form-control" name="tipodoc" [(ngModel)]="nuevoDocumento.tipodoc" required>
                          <option value>seleccione tipo doc</option>
                          <option *ngFor="let tipodocumento of tipodocumento" [value]="tipodocumento.tip_id">
                            {{ tipodocumento.tip_nombre +'-'+tipodocumento.tip_prefijo }}
