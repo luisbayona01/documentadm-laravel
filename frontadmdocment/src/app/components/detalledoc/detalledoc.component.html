@@ -1,0 +1,68 @@
+<section class="content container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card card-default">
+                  <div class="card-header">
+                    <span class="card-title">detalle doc</span>
+                    <div class="float-right">
+
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <form id="registerdoc" class="needs-validation" novalidate>
+                      <div class="mb-3 mt-3">
+                        <label for="uname" class="form-label">Nombre:</label>
+                        <input type="text" class="form-control"[(ngModel)]="nuevoDocumento.doc_nombre"
+                        name="doc_nombre" [value]="nuevoDocumento.doc_nombre"  required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Porfavor digite el nombre.</div>
+                      </div>
+
+                      <div class="mb-3 mt-3">
+                        <label for="uname" class="form-label">Contenido:</label>
+                        <input type="text" class="form-control"
+                          placeholder="Digite el contenido " name="doc_contenido"
+                           [(ngModel)]="nuevoDocumento.doc_contenido" [value]="nuevoDocumento.doc_contenido" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Porfavor digite el
+                          contenido.</div>
+                      </div>
+                      <div class="mb-3 mt-3">
+                        <label for="uname" class="form-label">Tipo doc:</label>
+                        <select class="form-control" name="tipodoc" [(ngModel)]="nuevoDocumento.tipodoc"required>
+                         <option value>seleccione tipo doc</option>
+                         <option *ngFor="let tipodocumento of tipodocumento" [value]="tipodocumento.tip_id">
+                           {{ tipodocumento.tip_nombre +'-'+tipodocumento.tip_prefijo }}
+                             </option>
+                 
+                        
+                        </select>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Porfavor selccione el tipo
+                          doc.</div>
+                      </div>
+
+                      <div class="mb-3 mt-3">
+    
+                        <label for="uname" class="form-label">Proceso:</label>
+                        <select class="form-control" name="proceso"[(ngModel)]="nuevoDocumento.proceso"
+                           required>
+                          <option value=''>selecione</option>
+                           <option *ngFor="let proces of proceso"   [value]="proces.pro_id">
+                           {{ proces.pro_nombre+'-'+proces.pro_prefijo }}
+                             </option>
+                        </select>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Porfavor selccione el
+                          proceso.</div>
+                      </div>
+                      <button type="button" class="btn btn-primary"(click)="gdarCambiosDoc()">
+                        guardar cambios
+                      </button>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>

@@ -31,7 +31,7 @@ protected $primaryKey = 'pro_id';
      */
     public function docDocumentos()
     {
-        return $this->hasMany('App\DocDocumento', 'doc_id_proceso', 'pro_id');
+        return $this->hasMany('App\Models\DocDocumento', 'doc_id_proceso', 'pro_id');
     }
     
 

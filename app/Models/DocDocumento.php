@@ -42,7 +42,7 @@ class DocDocumento extends Model
      */
     public function proProceso()
     {
-        return $this->hasOne('App\ProProceso', 'pro_id', 'doc_id_proceso');
+        return $this->hasOne('App\Models\ProProceso', 'pro_id', 'doc_id_proceso');
     }
     
     /**
@@ -50,7 +50,7 @@ class DocDocumento extends Model
      */
     public function tipTipoDoc()
     {
-        return $this->hasOne('App\TipTipoDoc', 'tip_id', 'doc_id_tipo');
+        return $this->hasOne('App\Models\TipTipoDoc', 'tip_id', 'doc_id_tipo');
     }
     
 

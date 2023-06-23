@@ -16,8 +16,11 @@ class DocDocumentoController extends Controller
    
      public function index()
     {
-        $documentos = DocDocumento::all();
-        return response()->json(['data' => $documentos]);
+        $documentos = DocDocumento::select('doc_documento.doc_id', 'doc_documento.doc_codigo', 'doc_documento.doc_nombre', 'doc_documento.doc_contenido', 'pro_proceso.pro_nombre as proceso', 'tip_tipo_doc.tip_nombre as tipodoc')
+                        ->join('pro_proceso', 'pro_proceso.pro_id', '=', 'doc_documento.doc_id_proceso')
+                        ->join('tip_tipo_doc', 'tip_tipo_doc.tip_id', '=', 'doc_documento.doc_id_tipo')
+                        ->get();
+            return response()->json(['data' => $documentos]);
     }
 
     public function store(Request $request)
@@ -37,7 +40,7 @@ class DocDocumentoController extends Controller
         
         $documento->save();
 
-        return response()->json(['message' => 'Documento creado exitosamente', 'data' => $documento], 201);
+        return response()->json(['ok'=> true,'message' => 'Documento creado exitosamente']);
     }
     
      public  function mostrar($id){
@@ -46,22 +49,22 @@ class DocDocumentoController extends Controller
         
  }
     public function update(Request $request, $id)
-    {   //dd($request->all());
+    {       
         $documento = DocDocumento::findOrFail($id);
-        $documento->doc_nombre = $request->input('nombre');
-        $documento->doc_contenido = $request->input('contenido');
-        $documento->doc_id_tipo = $request->input('tipo_doc_id');
-        $documento->doc_id_proceso = $request->input('proceso_id');
+        $documento->doc_nombre = $request->input('doc_nombre');
+        $documento->doc_contenido = $request->input('doc_contenido');
+        $documento->doc_id_tipo = $request->input('doc_id_tipo');
+        $documento->doc_id_proceso = $request->input('doc_id_proceso');
 
         // Verificar si el tipo o proceso del documento han cambiado
-        if ($documento->isDirty('tipo_doc_id') || $documento->isDirty('proceso_id')) {
+        if ($documento->isDirty('doc_id_tipo') || $documento->isDirty('doc_id_proceso')) {
             $codigo = $this->generarCodigoDocumento($documento->doc_id_tipo, $documento->doc_id_proceso);
                $documento->doc_codigo = $codigo;;
         }
 
         $documento->save();
 
-        return response()->json(['message' => 'Documento actualizado exitosamente', 'data' => $documento]);
+        return response()->json(['message' => 'Documento actualizado exitosamente']);
     }
 
     public function destroy($id)
@@ -90,6 +93,16 @@ class DocDocumentoController extends Controller
         }
 
         return $tipoDoc->tip_prefijo . '-' . $proceso->pro_prefijo . '-' . str_pad($nuevoConsecutivo, 5, '0', STR_PAD_LEFT);
+    }
+
+
+    public   function   getproceso(){
+      $proceso=ProProceso::all(['pro_id', 'pro_prefijo', 'pro_nombre']);
+     return $proceso;
+    }
+     public   function   gettipodoc(){
+      $tipodoc=TipTipoDoc::all(['tip_id', 'tip_nombre', 'tip_prefijo']);
+     return $tipodoc;
     }
 
 }

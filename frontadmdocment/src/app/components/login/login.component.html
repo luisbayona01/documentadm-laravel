@@ -1,0 +1,95 @@
+<div class="container" style='margin-top:30px'>
+    <div class="row justify-content-sm-center">
+
+        <div class="col col-md-6 col-md-offset-3">
+            <div class="card-sm card-login">
+                 <img src="assets/img/logo/logo.jpg" class="rounded mx-auto d-block" alt="Cinque Terre">
+                <div class="card-heading">
+                    <div class="row">
+                        <div class="col col-sm-4">
+                            <a href="#" class="active" id="login-form-link" (click)="formlogin()">Iniciar sesión</a>
+
+                        </div>
+                        <div class="col col-sm-4">
+                            <a href="#" id="register-form-link" (click)="formregister()">Regístrate ahora</a>
+                        </div>
+                        <div class="col-sm-4">
+
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class=" col col-sm-12">
+                            <form id="login-form" class="needs-validation" novalidate method="post" role="form" style="display: block;">
+                                <div class="form-group">
+                                    <input type="email" name="email" id="correo" tabindex="1" class="form-control" placeholder="Email"  [(ngModel)]="email" required>
+                                    <div class="valid-feedback">Correcto!</div>
+                                    <div class="invalid-feedback">Escriba un correo correctamente</div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" id="passwordlogin" tabindex="2" class="form-control" placeholder="Password" [(ngModel)]="password"  required>
+                                    <div class="valid-feedback">Correcto!</div>
+                                    <div class="invalid-feedback">el campo de contraseña es obligatorio</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col align-self-center">
+                                            <button type="button" id="login-submit" class="form-control btn btn-login" (click)="logear()">
+                                                <span class="spinner-border spinner-border-sm mr-2" style="display:none;"id="loading2"></span>
+                                                Iniciar sesión
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="text-center">
+                                                <a href="#" class="forgot-password" data-toggle="modal" data-target="#recoverymodal">¿Has olvidado tu contraseña?</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <form id="register-form" class="needs-validation" novalidate method="post" role="form" style="display: none;">
+                                <div class="form-group">
+                                    <input type="text" name="name" id="Nombres" class="form-control" placeholder="Nombres" value="" [(ngModel)]="username" required/>
+                                    <div class="valid-feedback">Correcto!</div>
+                                    <div class="invalid-feedback">el campo de Nombres es obligatorio</div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" id="emailR" tabindex="1" class="form-control" placeholder="Correo Electrónico" value=""[(ngModel)]="email" required/>
+                                    <div class="valid-feedback">Correcto!</div>
+                                    <div class="invalid-feedback">el campo de email es obligatorio</div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" id="passwordR" tabindex="2" class="form-control" placeholder="Contraseña" [(ngModel)]="password" required/>
+                                    <div class="valid-feedback">Correcto!</div>
+                                    <div class="invalid-feedback">el campo de contraseña es obligatorio</div>
+                                </div>
+
+                             
+
+                                <div class="form-group">
+                                    <div class="row">
+
+                                        <div class="col-sm-4 col align-self-center">
+                                            <button type="button" id="register-submit " class="form-control btn btn-register" (click)="register()"> 
+                                                <span class="spinner-border spinner-border-sm mr-2" style="display:none;"id="loading"></span>
+                                                Crear cuenta
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

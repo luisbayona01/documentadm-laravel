@@ -34,7 +34,7 @@ class AuthController extends Controller
     ]);
         
        if ($Usuarios->save()){
-        $token= $Usuarios->createToken('authToken')->accessToken;
+        //$token= $Usuarios->createToken('authToken')->accessToken;
         $menssage="Usuario registrado correctamente";
         return response()->json([
             'ok'    => true,

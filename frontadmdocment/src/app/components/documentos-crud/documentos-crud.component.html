@@ -1,0 +1,150 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <h2>documentos</h2>
+      <p>administracion de documentos:</p>
+    </div>
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-3">
+      <h2></h2>
+
+      <button type="button" class="btn btn-primary" data-toggle="modal"
+        data-target="#myModal">
+        registrar doc
+      </button>
+
+    </div>
+    <div class="col-sm-3">
+      <h2></h2>
+
+      <button type="button" class="btn btn-danger" (click)="logout()">
+        salir 
+      </button>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="container">
+
+  <table class="table table-striped" id="documento">
+    <thead>
+      <tr>
+        <th>codigo</th>
+        <th>nombre</th>
+        <th>contenido</th>
+        <th>tipo</th>
+        <th>proceso</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let documento of documentos">
+        <td>{{documento.doc_codigo }}</td>
+        <td>{{documento.doc_nombre }}</td>
+        <td>{{documento.doc_contenido}}</td>
+        <td>{{documento.tipodoc }}</td>
+        <td>{{documento.proceso }}</td>
+        <td><button type="button" class='btn btn-warning' [routerLink]="['/detalle', documento.doc_id]">Editar </button> </td>
+        <td><button type="button" class='btn btn-danger'(click)="elminarDocumentos(documento.doc_id)">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Registrar</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+
+          <section class="content container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card card-default">
+                  <div class="card-header">
+                    <span class="card-title">Create doc</span>
+                    <div class="float-right">
+
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <form id="registerdoc" class="needs-validation" novalidate>
+                      <div class="mb-3 mt-3">
+                        <label for="uname" class="form-label">Nombre:</label>
+                        <input type="text" class="form-control"
+                          placeholder="Digite el nombre " name="name" value
+                          [(ngModel)]="nombre" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Porfavor digite el nombre.</div>
+                      </div>
+
+                      <div class="mb-3 mt-3">
+                        <label for="uname" class="form-label">Contenido:</label>
+                        <input type="text" class="form-control"
+                          placeholder="Digite el contenido " name="contenido"
+                          value [(ngModel)]="contenido" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Porfavor digite el
+                          contenido.</div>
+                      </div>
+                      <div class="mb-3 mt-3">
+                        <label for="uname" class="form-label">Tipo doc:</label>
+                        <select class="form-control" name="tipodoc"
+                          [(ngModel)]="tipo_doc_id" required>
+                         <option value>seleccione tipo doc</option>
+                           <option *ngFor="let tipodocumento of tipodocumento" [value]="tipodocumento.tip_id">
+                           {{ tipodocumento.tip_nombre +'-'+tipodocumento.tip_prefijo }}
+                             </option>
+                        </select>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Porfavor selccione el tipo
+                          doc.</div>
+                      </div>
+
+                      <div class="mb-3 mt-3">
+                        <label for="uname" class="form-label">Proceso:</label>
+                        <select class="form-control" name="proceso"
+                          [(ngModel)]="proceso_id" required>
+                          <option value>seleccione un proceso</option>
+                          <option *ngFor="let proces of proceso" [value]="proces.pro_id">
+                           {{ proces.pro_nombre+'-'+proces.pro_prefijo }}
+                             </option>
+                        </select>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Porfavor selccione el
+                          proceso.</div>
+                      </div>
+                      <button type="button" class="btn btn-primary"
+                        (click)="registrarDocumentos()">
+                        registrar
+                      </button>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

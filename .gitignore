@@ -13,3 +13,41 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+# Node
+/frontadmdocment/node_modules
+/frontadmdocment/npm-debug.log
+/frontadmdocment/yarn-error.log
+
+# IDEs and editors
+/frontadmdocment/.idea/
+/frontadmdocment/.project
+/frontadmdocment/.classpath
+/frontadmdocment/.c9/
+/frontadmdocment/*.launch
+/frontadmdocment/.settings/
+/frontadmdocment/*.sublime-workspace
+
+# Visual Studio Code
+/frontadmdocment/.vscode/*
+!/frontadmdocment/.vscode/settings.json
+!/frontadmdocment/.vscode/tasks.json
+!/frontadmdocment/.vscode/launch.json
+!/frontadmdocment/.vscode/extensions.json
+/frontadmdocment/.history/*
+
+# Miscellaneous
+/frontadmdocment/.angular/cache
+/frontadmdocment/.sass-cache/
+/frontadmdocment/connect.lock
+/frontadmdocment/coverage
+/frontadmdocment/libpeerconnection.log
+/frontadmdocment/testem.log
+/frontadmdocment/typings
+
+# System files
+/frontadmdocment/.DS_Store
+/frontadmdocment/Thumbs.db
+/frontadmdocment/dist
+/frontadmdocment/tmp
+/frontadmdocment/out-tsc
+/frontadmdocment/bazel-out

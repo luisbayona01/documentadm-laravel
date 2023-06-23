@@ -39,7 +39,7 @@ protected $primaryKey = 'tip_id';
      */
     public function docDocumentos()
     {
-        return $this->hasMany('App\DocDocumento', 'doc_id_tipo', 'tip_id');
+        return $this->hasMany('App\Models\DocDocumento', 'doc_id_tipo', 'tip_id');
     }
     
 
