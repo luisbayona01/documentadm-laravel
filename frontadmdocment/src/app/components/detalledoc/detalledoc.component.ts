@@ -99,7 +99,7 @@ this.documentosService.updateDocumento(this.nuevoDocumento,this.iddoc).subscribe
       this.dataresponse=data;
  console.log(this.dataresponse);
   this.toastr.success( this.dataresponse['message']);
-  //this.router.navigate(['documentos'])     
+  this.router.navigate(['documentos'])     
  
       });
 //console.log(this.iddoc);
