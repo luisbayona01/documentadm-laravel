@@ -9,7 +9,8 @@
 
 
 
-https://www.youtube.com/watch?v=JLjSliIRZbo
+https://www.youtube.com/watch?v=BwtjwiY-8cc
+
 PHP (versión 7.4 o superior)
 Composer
 Node.js (versión 14 o superior)
